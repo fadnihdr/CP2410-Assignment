@@ -1,7 +1,8 @@
 import time
 
+
 class LinkedSparseArray:
-    def __init__(self,n):
+    def __init__(self, n):
         self._n = n
         self._array = [None] * self._n
 
@@ -29,22 +30,20 @@ class LinkedSparseArray:
             self._array[self._n - 1] = e
         self._array[j] = e
 
+    def fill(self,seq):
+        if not 0 <= len(seq) < self._n:
+            raise ValueError("Can't do that, fam")
+        x = 0
+        for i in seq:
+            self._array[x] = i
+            x =+ 1
+
+
 
 if __name__ == "__main__":
-    start = time.time()
-    l = LinkedSparseArray(10 ** 9)
-    print("Get usage")
-    print(l.get_usage())
-    print("Setting Item....")
-    l.__setitem__(0, 1)
-    print("Done!")
-    print("Getting item")
-    print(l.__getitem__(0))
-    print("Updated get_usage is")
-    print(l.get_usage())
-    print("Array Length is")
-    print(l.__len__())
-    print("Last item is")
-    print(l.__getitem__(-1))
-    end = time.time()
-    print (end - start)
+    start = time.clock()
+    list = [1,2,3,4,5,6,7,8]
+    l = LinkedSparseArray(1000000)
+    l.fill(list)
+    end = time.clock()
+    print(end - start)
